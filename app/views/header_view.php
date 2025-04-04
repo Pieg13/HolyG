@@ -1,13 +1,21 @@
 <header>
     <nav id="headerNav">
-        <img src="<?php echo ROOT . '/assets/images/car-967470_640.webp'; ?>" alt="avocado logo">
+        <!-- Avocado Logo -->
+        <img src= "public/assets/images/avocado.svg" alt="avocado logo" aria-label="Avocado logo">
+        <p>HOLY GUACAMOLE</p>
+        
+        <!-- Navigation Links -->
         <ul>
-            <li><a href="">HOME</a></li>
-            <li><a href="">RECIPES</a></li>
-            <li><a href="">ABOUT</a></li>
-            <li><a href="">CONTACT</a></li>
-            <li><a href="?action=signin">SIGN IN</a></li>
+            <li><a href="?action=home" class="<?= $currentPage == 'home' ? 'active' : ''; ?>">HOME</a></li>          
+            <li><a href="?action=recipes" class="<?= $currentPage == 'recipes' ? 'active' : ''; ?>">RECIPES</a></li>
+            <li><a href="?action=about" class="<?= $currentPage == 'about' ? 'active' : ''; ?>">ABOUT</a></li>
+            <li><a href="?action=contact" class="<?= $currentPage == 'contact' ? 'active' : ''; ?>">CONTACT</a></li>
+            <li><a href="<?= isset($_SESSION['user']) ? '?action=logout' : '?action=signin'; ?>">
+                <?= isset($_SESSION['user']) ? 'LOG OUT' : 'SIGN IN'; ?></a>
+            </li>
         </ul>
-        <img src="<?php echo ROOT . '/assets/images/burger-menu.svg'; ?>" alt="burger menu logo">
+        
+        <!-- Burger Menu Icon (Mobile) -->
+        <img src="public/assets/images/burger-menu.svg" alt="burger menu logo" aria-label="Menu">
     </nav>
 </header>

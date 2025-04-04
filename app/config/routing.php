@@ -1,20 +1,26 @@
 <?php
 
-// Routing in base of what $_GET returns
+// Define routes as an associative array
+$routes = [
+    'home'   => CTRL_DIR . '/home_ctrl.php',
+    'signin' => CTRL_DIR . '/signin_ctrl.php',
+    'signup' => CTRL_DIR . '/signup_ctrl.php',
+];
+
+// Set default page
+$currentPage = 'home';
+
+// Check if action parameter exists
 if (isset($_GET["action"])) {
-    switch($_GET["action"]) {
-        case "signin":
-        require APP_DIR . "/controllers/signin_ctrl.php";
-        break;
-        case "signup":
-        require APP_DIR . "/controllers/signup_ctrl.php";
-        break;
-        default:
-        require ROOT . "/controllers/404_ctrl.php";
-        break;
-        }
+    $currentPage = $_GET["action"];
+}
+
+// Route handling using associative array
+if (isset($routes[$currentPage])) {
+    require $routes[$currentPage];
 } else {
-    require APP_DIR . '/controllers/home_ctrl.php';
+    // Handle 404 if route doesn't exist
+    require CTRL_DIR . '/404_ctrl.php';
 }
 
 ?>

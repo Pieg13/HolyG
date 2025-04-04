@@ -1,64 +1,42 @@
 <?php
+use App\Models\UserModel;
+use App\Exceptions\UserCreationException;
 
-/* --------------------- Register new user into database -------------------- */
-
-require APP_DIR . '/models/data_db.php';
-
-$errors = [];
+$error = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = trim($_POST['email']);
-    $username = trim($_POST['username']);
-    $password = $_POST['password'];
-    $profilePicture = $_FILES['profilePicture'];
+    try {
+        // Basic sanitization
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $password = $_POST['password'] ?? '';
 
-    // Validate email format
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Invalid email format.";
-    }
+        // Attempt registration
+        $success = UserModel::create([
+            'email' => $email,
+            'username' => $username,
+            'password' => $password
+        ]);
 
-    // Ensure password length is valid
-    if (strlen($password) < 6) {
-        $errors[] = "Password must be at least 6 characters.";
-    }
-
-    // Hash password
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    // Handle profile picture upload
-    $profilePicturePath = NULL;
-    if (!empty($profilePicture['name'])) {
-        $targetDir = "public/assets/images/";
-        $targetFile = $targetDir . basename($profilePicture["name"]);
-        $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-        // Validate image file type
-        $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
-        if (!in_array($fileType, $allowedTypes)) {
-            $errors[] = "Invalid file type. Only JPG, PNG, and GIF are allowed.";
-        }
-
-        // Move the uploaded file
-        if (empty($errors) && move_uploaded_file($profilePicture["tmp_name"], $targetFile)) {
-            $profilePicturePath = $targetFile;
-        } elseif (empty($errors)) {
-            $errors[] = "Error uploading profile picture.";
-        }
-    }
-
-    // If no errors, attempt to register the user
-    if (empty($errors)) {
-        $result = DBmain::registerUser($email, $username, $hashedPassword, $profilePicturePath);
-
-        if ($result === true) {
-            header("Location: index.php?page=signin");
+        if ($success) {
+            header("Location: ?action=signin");
             exit();
-        } else {
-            $errors[] = $result; // If the result is an error message
         }
+
+    } catch (InvalidArgumentException $e) {
+        $error = $e->getMessage();
+    } catch (UserCreationException $e) {
+        error_log("Signup error: " . $e->getMessage());
+        $error = "Account creation failed. Please try different credentials.";
+    } catch (PDOException $e) {
+        error_log("Database error: " . $e->getMessage());
+        $error = "System temporarily unavailable. Please try later.";
+    } catch (Throwable $e) {
+        error_log("Unexpected error: " . $e->getMessage());
+        $error = "An unexpected error occurred";
     }
 }
 
 $title = 'Sign Up | HolyG';
+require APP_DIR . '/views/head_view.php';
 require APP_DIR . '/views/signup_view.php';
-?>

@@ -1,0 +1,22 @@
+@use 'variables' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+html, body {
+    height: 100%;
+    font-family: sans-serif;
+    background-color: $bg;
+    color: $text-dark;
+}
+
+ul, ol {
+    list-style: none;
+    li {
+        text-decoration: none;
+    }
+}

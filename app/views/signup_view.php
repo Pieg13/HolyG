@@ -1,11 +1,16 @@
 <?php require APP_DIR . '/views/head_view.php'; ?>
+<?php require APP_DIR . '/views/header_view.php'; ?>
 
-<body>
-
-    <h1>Sign Up</h1>
-
-    <form action="register.php" method="POST" enctype="multipart/form-data">
+    <form action="index.php?action=signup" method="POST" enctype="multipart/form-data">
         <h2>Register</h2>
+
+        <?php if (!empty($errors)): ?>
+        <div class="error-box">
+            <?php foreach ($errors as $error): ?>
+                <p><?= htmlspecialchars($error) ?></p>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
         
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -16,10 +21,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required minlength="6">
 
-        <label for="profilePicture">Profile Picture:</label>
-        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
-
         <button type="submit">Sign Up</button>
     </form>
 
-</body>
+<?php require APP_DIR . '/views/footer_view.php'; ?>
