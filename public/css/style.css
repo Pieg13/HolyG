@@ -1,0 +1,110 @@
+/* montserrat-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/montserrat-v29-latin-regular.woff2") format("woff2");
+}
+/* ranchers-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Ranchers";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/ranchers-v17-latin-regular.woff2") format("woff2");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+html, body {
+  height: 100%;
+  font-family: sans-serif;
+  background-color: #EDEDED;
+  color: #000;
+}
+
+ul, ol {
+  list-style: none;
+}
+ul li a, ol li a {
+  text-decoration: none;
+}
+
+#headerNav {
+  padding: 10px;
+}
+#headerNav #nav-group {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+#headerNav #nav-group #logo-group {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+#headerNav #nav-group #logo-group img {
+  height: auto;
+  width: 40px;
+}
+#headerNav #nav-group #logo-group p {
+  font-family: "Ranchers";
+  font-size: 18px;
+}
+#headerNav #nav-group #burger-icon {
+  width: auto;
+  height: 40px;
+  display: block;
+  cursor: pointer;
+}
+#headerNav #nav-links {
+  display: none;
+}
+#headerNav #nav-links li {
+  margin-top: 10px;
+}
+#headerNav #nav-links li a {
+  color: #000;
+  font-size: 18px;
+  padding: 10px;
+  transition: 0.3s;
+}
+#headerNav #nav-links li a.active {
+  color: #007A33;
+}
+#headerNav #nav-links li a:hover {
+  color: #C8102E;
+}
+
+/* Desktop View */
+@media (min-width: 768px) {
+  #burger-icon {
+    display: none;
+  }
+  #nav-links {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+  }
+  #nav-links li {
+    margin: 0;
+  }
+}
+/* Mobile View for Burger Menu */
+@media (max-width: 767px) {
+  #burger-icon {
+    display: block;
+  }
+  #nav-links.open {
+    display: block; /* Show menu links when burger menu is open */
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,10 +1,28 @@
 @use 'variables' as *;
 
+/* montserrat-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/montserrat-v29-latin-regular.woff2') format('woff2');
+}
+
+/* ranchers-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Ranchers';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/ranchers-v17-latin-regular.woff2') format('woff2');
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: inherit;
+    font-family: 'Montserrat';
 }
 
 html, body {
@@ -16,7 +34,7 @@ html, body {
 
 ul, ol {
     list-style: none;
-    li {
+    li a {
         text-decoration: none;
     }
 }

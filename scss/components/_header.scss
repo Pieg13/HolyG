@@ -1,0 +1,72 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+#headerNav {
+    padding: 10px;
+    #nav-group {
+        @include flexmid(row, space-between);
+        #logo-group {
+            @include flexmid(row, space-between);
+            img {
+                height: auto;
+                width: 40px;
+            }
+            p {
+                font-family: 'Ranchers';
+                font-size: 18px;
+            }
+        }
+        #burger-icon {
+            width: auto;
+            height: 40px;
+            display: block;
+            cursor: pointer;
+        }
+    }
+    #nav-links {
+        display: none;
+        li {
+            margin-top: 10px;
+            a {
+                color: $text-dark;
+                font-size: 18px;
+                padding: 10px;
+                transition: 0.3s;
+                &.active {
+                    color: $main;
+                }
+                &:hover {
+                    color: $accent;
+                }
+            }
+        }
+    }
+}
+
+/* Desktop View */
+@media (min-width: 768px) {
+    #burger-icon {
+        display: none;
+    }
+
+    #nav-links {
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        
+        li {
+            margin: 0;
+        }
+    }
+}
+
+/* Mobile View for Burger Menu */
+@media (max-width: 767px) {
+    #burger-icon {
+        display: block;
+    }
+    
+    #nav-links.open {
+        display: block;  /* Show menu links when burger menu is open */
+    }
+}
