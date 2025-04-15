@@ -10,6 +10,8 @@ $routes = [
     'contact' => CTRL_DIR . '/contact_ctrl.php',
     'logout'  => CTRL_DIR . '/logout_ctrl.php',
     'privacy' => CTRL_DIR . '/privacy_ctrl.php',
+    'admin'   => CTRL_DIR . '/admin_ctrl.php',
+    'user'    => CTRL_DIR . '/user_ctrl.php',
 ];
 
 // Set default page

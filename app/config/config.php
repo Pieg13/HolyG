@@ -18,4 +18,25 @@ const DB_PASSWORD = ''; // user password
 const DB_DATABASE = 'holyg'; // database name
 const DB_HOST = 'localhost'; // database host
 
+/* ------------------------- authentication helpers ------------------------- */
+function is_logged_in(): bool {
+    return isset($_SESSION['user']);
+}
+
+function current_user_role(): ?string {
+    return $_SESSION['user']['role'] ?? null;
+}
+
+function is_admin(): bool {
+    return is_logged_in() && current_user_role() === 'Admin';
+}
+
+function current_user_id(): ?int {
+    return $_SESSION['user']['id'] ?? null;
+}
+
+function current_user_data(): ?array {
+    return $_SESSION['user'] ?? null;
+}
+
 ?>

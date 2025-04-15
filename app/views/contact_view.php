@@ -18,13 +18,13 @@ if (isset($_SESSION["contact_status"])) {
 
 <form action="?action=contact" method="post" class="basic-form">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" placeholder="Your name" required><br><br>
+    <input type="text" id="name" name="name" required><br><br>
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" placeholder="email@company.com" required><br><br>
 
     <label for="message">Message:</label><br>
-    <textarea id="message" name="message" placeholder="Your message..." required></textarea><br><br>
+    <textarea id="message" name="message" required></textarea><br><br>
 
     <div class="checkbox-container">
         <input type="checkbox" id="privacy" name="privacy" required>

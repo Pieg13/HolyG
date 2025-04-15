@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $valid = false;
     }
     
-    if (strlen($username) < 3 || strlen($username) > 50) {
+    if (strlen($username) < 3 || strlen($username) > 30) {
         $errors[] = "Username must be between 3-50 characters";
         $valid = false;
     }

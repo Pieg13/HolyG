@@ -6,7 +6,7 @@
     <form action="?action=signin" method="POST" class="basic-form">
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" placeholder="email@company.com" required>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>

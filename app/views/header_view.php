@@ -16,9 +16,10 @@
             <li><a href="?action=recipes" class="<?= $currentPage == 'recipes' ? 'active' : ''; ?>">RECIPES</a></li>
             <li><a href="?action=about" class="<?= $currentPage == 'about' ? 'active' : ''; ?>">ABOUT</a></li>
             <li><a href="?action=contact" class="<?= $currentPage == 'contact' ? 'active' : ''; ?>">CONTACT</a></li>
-            <li><a href="<?= isset($_SESSION['user']) ? '?action=logout' : '?action=signin'; ?>" class="<?= in_array($currentPage, ['signin', 'logout']) ? 'active' : ''; ?>">
-                <?= isset($_SESSION['user']) ? 'LOG OUT' : 'SIGN IN'; ?></a>
-            </li>
+            <li><a href="<?= is_logged_in() ? (is_admin() ? '?action=admin' : '?action=user') : '?action=signin' ?>"
+                class="<?= in_array($currentPage, ['signin', 'admin', 'user']) ? 'active' : '' ?>">
+                <?= is_logged_in() ? (is_admin() ? 'ADMIN' : 'ACCOUNT') : 'SIGN IN' ?>
+            </a></li>
         </ul>
     </nav>
 </header>
