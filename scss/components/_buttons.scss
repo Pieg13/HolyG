@@ -1,1 +1,13 @@
-// Style for buttons
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.call-to-action {
+    color: $text-light;
+    background-color: $main;
+    padding: 10px 20px;
+    
+    &:hover {
+        background-color: $accent;
+    }
+    text-decoration: none;
+}

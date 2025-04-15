@@ -1,9 +1,9 @@
 <?php require APP_DIR . '/views/head_view.php'; ?>
 <?php require APP_DIR . '/views/header_view.php'; ?>
 
-    <h1>Sign In</h1>
+    <h1 class="main-title">Sign In</h1>
 
-    <form action="?action=signin" method="POST">
+    <form action="?action=signin" method="POST" class="basic-form">
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>

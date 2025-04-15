@@ -1,72 +1,117 @@
 @use '../mixins' as *;
 @use '../variables' as *;
 
-#headerNav {
-    padding: 10px;
+#header-nav {
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
     #nav-group {
         @include flexmid(row, space-between);
         #logo-group {
-            @include flexmid(row, space-between);
+            @include flexmid(row, flex-start);
+            
+            a {
+                @include flexmid(row, flex-start);
+                text-decoration: none;
+                color: $text-dark;
+            }
+            
             img {
                 height: auto;
                 width: 40px;
+                margin-right: 10px;
             }
+            
             p {
                 font-family: 'Ranchers';
                 font-size: 18px;
             }
         }
+        
         #burger-icon {
-            width: auto;
+            width: 40px;
             height: 40px;
-            display: block;
+            background: none;
+            border: none;
             cursor: pointer;
+            padding: 0;
+            display: block; // Initially visible on mobile
+            
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
+    
     #nav-links {
-        display: none;
+        display: none; // Initially hidden on mobile
+        margin-top: 15px;
+        
         li {
-            margin-top: 10px;
+            margin: 15px 0;
+            text-align: center;
+            
             a {
                 color: $text-dark;
-                font-size: 18px;
-                padding: 10px;
-                transition: 0.3s;
+                font-size: 16px;
+                padding: 8px 0;
+                display: block;
+                transition: all 0.3s ease;
+                font-weight: 500;
+                
                 &.active {
                     color: $main;
+                    font-weight: bold;
                 }
+                
                 &:hover {
                     color: $accent;
                 }
             }
         }
-    }
-}
-
-/* Desktop View */
-@media (min-width: 768px) {
-    #burger-icon {
-        display: none;
-    }
-
-    #nav-links {
-        display: flex;
-        justify-content: space-around;
-        margin: 0;
         
-        li {
-            margin: 0;
+        &.open {
+            display: block; // Show when toggled on mobile
         }
     }
-}
-
-/* Mobile View for Burger Menu */
-@media (max-width: 767px) {
-    #burger-icon {
-        display: block;
+    
+    /* Tablet and Desktop Styles */
+    @media screen and (min-width: 768px) {
+        padding: 15px 30px;
+        
+        #nav-group {
+            #burger-icon {
+                display: none; // Hide on desktop
+            }
+        }
+        
+        #nav-links {
+            display: flex; // Always visible on desktop
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-top: 0;
+            @include flexmid(row, flex-end);
+            
+            li {
+                margin: 0 0 0 25px;
+                text-align: left;
+                
+                a {
+                    padding: 8px 0;
+                }
+            }
+        }
     }
     
-    #nav-links.open {
-        display: block;  /* Show menu links when burger menu is open */
+    /* Larger Desktop */
+    @media screen and (min-width: 1024px) {
+        @include flexmid(row, space-between);
+        padding: 15px 50px;
+        
+        #nav-links {
+            margin-top: 0;
+        }
     }
 }

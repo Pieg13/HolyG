@@ -35,76 +35,292 @@ ul li a, ol li a {
   text-decoration: none;
 }
 
-#headerNav {
-  padding: 10px;
+#header-nav {
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Tablet and Desktop Styles */
+  /* Larger Desktop */
 }
-#headerNav #nav-group {
+#header-nav #nav-group {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
 }
-#headerNav #nav-group #logo-group {
+#header-nav #nav-group #logo-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: center;
 }
-#headerNav #nav-group #logo-group img {
+#header-nav #nav-group #logo-group a {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+}
+#header-nav #nav-group #logo-group img {
   height: auto;
   width: 40px;
+  margin-right: 10px;
 }
-#headerNav #nav-group #logo-group p {
+#header-nav #nav-group #logo-group p {
   font-family: "Ranchers";
   font-size: 18px;
 }
-#headerNav #nav-group #burger-icon {
-  width: auto;
+#header-nav #nav-group #burger-icon {
+  width: 40px;
   height: 40px;
-  display: block;
+  background: none;
+  border: none;
   cursor: pointer;
+  padding: 0;
+  display: block;
 }
-#headerNav #nav-links {
+#header-nav #nav-group #burger-icon img {
+  width: 100%;
+  height: 100%;
+}
+#header-nav #nav-links {
   display: none;
+  margin-top: 15px;
 }
-#headerNav #nav-links li {
-  margin-top: 10px;
+#header-nav #nav-links li {
+  margin: 15px 0;
+  text-align: center;
 }
-#headerNav #nav-links li a {
+#header-nav #nav-links li a {
   color: #000;
-  font-size: 18px;
-  padding: 10px;
-  transition: 0.3s;
+  font-size: 16px;
+  padding: 8px 0;
+  display: block;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
-#headerNav #nav-links li a.active {
+#header-nav #nav-links li a.active {
   color: #007A33;
+  font-weight: bold;
 }
-#headerNav #nav-links li a:hover {
+#header-nav #nav-links li a:hover {
   color: #C8102E;
 }
-
-/* Desktop View */
-@media (min-width: 768px) {
-  #burger-icon {
+#header-nav #nav-links.open {
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  #header-nav {
+    padding: 15px 30px;
+  }
+  #header-nav #nav-group #burger-icon {
     display: none;
   }
-  #nav-links {
+  #header-nav #nav-links {
     display: flex;
-    justify-content: space-around;
-    margin: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
   }
-  #nav-links li {
-    margin: 0;
+  #header-nav #nav-links li {
+    margin: 0 0 0 25px;
+    text-align: left;
+  }
+  #header-nav #nav-links li a {
+    padding: 8px 0;
   }
 }
-/* Mobile View for Burger Menu */
-@media (max-width: 767px) {
-  #burger-icon {
-    display: block;
+@media screen and (min-width: 1024px) {
+  #header-nav {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 50px;
   }
-  #nav-links.open {
-    display: block; /* Show menu links when burger menu is open */
+  #header-nav #nav-links {
+    margin-top: 0;
   }
+}
+
+footer {
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+footer #footer-nav {
+  color: #000;
+  padding: 18px 0;
+}
+footer #footer-nav a {
+  color: #000;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 18px;
+}
+
+.call-to-action {
+  color: #FFF;
+  background-color: #007A33;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.call-to-action:hover {
+  background-color: #C8102E;
+}
+
+.main-title {
+  font-size: 24px;
+  margin: 30px 10px;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .main-title {
+    font-size: 40px;
+  }
+}
+
+.secondary-title {
+  font-size: 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .secondary-title {
+    font-size: 26px;
+  }
+}
+@media (min-width: 1024px) {
+  .secondary-title {
+    font-size: 32px;
+  }
+}
+
+.basic-text {
+  font-size: 16px;
+  margin: 20px 0;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  .basic-text {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1024px) {
+  .basic-text {
+    font-size: 20px;
+  }
+}
+
+.basic-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  max-width: 100%;
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  .basic-form {
+    max-width: 600px;
+    margin: 30px auto;
+  }
+}
+@media (min-width: 1024px) {
+  .basic-form {
+    max-width: 800px;
+  }
+}
+.basic-form label {
+  margin: 4px;
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  .basic-form label {
+    font-size: 18px;
+  }
+}
+.basic-form input, .basic-form textarea {
+  width: 100%;
+  height: auto;
+  padding: 8px;
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  .basic-form input, .basic-form textarea {
+    font-size: 18px;
+  }
+}
+.basic-form .checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.basic-form .checkbox-container input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+}
+.basic-form input[type=submit], .basic-form button {
+  height: 40px;
+  margin: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  color: #FFF;
+  background-color: #007A33;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+.basic-form input[type=submit]:hover, .basic-form button:hover {
+  background-color: #C8102E;
+}
+@media (min-width: 768px) {
+  .basic-form input[type=submit], .basic-form button {
+    font-size: 18px;
+    height: 45px;
+  }
+}
+
+.video-container {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.video-container video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .video-container {
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+@media (min-width: 1024px) {
+  .video-container {
+    max-width: 900px;
+  }
+}
+#about-section {
+  margin: 20px 10px 30px 10px;
+}
+#about-section .call-to-action {
+  margin: 20px 0;
 }
 
 /*# sourceMappingURL=style.css.map */

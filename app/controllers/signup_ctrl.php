@@ -1,42 +1,63 @@
 <?php
-use App\Models\UserModel;
-use App\Exceptions\UserCreationException;
+$title = 'Sign Up | HolyG';
+$errors = [];
 
-$error = null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require APP_DIR . '/models/user_mdl.php';
+    
+    // Sanitize inputs
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    try {
-        // Basic sanitization
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-        $password = $_POST['password'] ?? '';
+    // Validation
+    $valid = true;
+    
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format";
+        $valid = false;
+    }
+    
+    if (strlen($username) < 3 || strlen($username) > 50) {
+        $errors[] = "Username must be between 3-50 characters";
+        $valid = false;
+    }
+    
+    if (strlen($password) < 6) {
+        $errors[] = "Password must be at least 6 characters";
+        $valid = false;
+    }
 
-        // Attempt registration
-        $success = UserModel::create([
-            'email' => $email,
-            'username' => $username,
-            'password' => $password
-        ]);
-
-        if ($success) {
-            header("Location: ?action=signin");
-            exit();
+    // Check existing credentials
+    if ($valid) {
+        $exists = checkExistingCredentials($email, $username);
+        
+        if ($exists['email_exists']) {
+            $errors[] = "Email address already registered";
         }
+        if ($exists['username_exists']) {
+            $errors[] = "Username is already taken";
+        }
+        
+        if (!empty($errors)) {
+            $valid = false;
+        }
+    }
 
-    } catch (InvalidArgumentException $e) {
-        $error = $e->getMessage();
-    } catch (UserCreationException $e) {
-        error_log("Signup error: " . $e->getMessage());
-        $error = "Account creation failed. Please try different credentials.";
-    } catch (PDOException $e) {
-        error_log("Database error: " . $e->getMessage());
-        $error = "System temporarily unavailable. Please try later.";
-    } catch (Throwable $e) {
-        error_log("Unexpected error: " . $e->getMessage());
-        $error = "An unexpected error occurred";
+    // Create user if valid
+    if ($valid) {
+        try {
+            createUser($email, $username, $password);
+            header('Location: index.php?action=signin');
+            exit();
+        } catch (InvalidArgumentException $e) {
+            $errors[] = htmlspecialchars($e->getMessage());
+        } catch (PDOException $e) {
+            error_log("Registration error: " . $e->getMessage());
+            $errors[] = "Registration failed. Please try again.";
+        }
     }
 }
 
-$title = 'Sign Up | HolyG';
 require APP_DIR . '/views/head_view.php';
 require APP_DIR . '/views/signup_view.php';
