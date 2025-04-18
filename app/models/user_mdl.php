@@ -5,10 +5,11 @@ require_once APP_DIR . '/models/database_mdl.php';
  * User Model - Handles all user-related database operations
  */
 
-/*
- * Checks if a user exists with the given email or username
- * Parameters: strings $email and $username
- * Returns array with booleans for email and username existence
+/**
+ * Checks if email or username already exists
+ * @param string $email Email to check
+ * @param string $username Username to check
+ * @return array ['email_exists' => bool, 'username_exists' => bool]
  */
 function checkExistingCredentials(string $email, string $username): array {
     $sql = "SELECT 
@@ -24,10 +25,13 @@ function checkExistingCredentials(string $email, string $username): array {
     ];
 }
 
-/*
- * Creates a new user in the database
- * Parameters: strings $email, $username and $password
- * Returns the new user's ID as integer
+/**
+ * Creates a new user account
+ * @param string $email User's email
+ * @param string $username User's username
+ * @param string $password User's password
+ * @return int ID of the newly created user
+ * @throws InvalidArgumentException On validation failure
  */
 function createUser(string $email, string $username, string $password): int {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -56,13 +60,35 @@ function createUser(string $email, string $username, string $password): int {
     return (int)connect()->lastInsertId();
 }
 
-/*
- * Gets user by email
- * Parameter: string $email
- * Returns user array or null if not found
+/**
+ * Retrieves a user by email
+ * @param string $email Email to search for
+ * @return array|null User record or null if not found
  */
 function getUserByEmail(string $email): ?array {
     $sql = "SELECT * FROM User WHERE Email = :email LIMIT 1";
     $stmt = executeQuery($sql, [':email' => $email]);
     return $stmt->fetch() ?: null;
+}
+
+
+/**
+ * Deletes a user by ID
+ * @param int $userId ID of the user to delete
+ * @return bool Always returns true
+ */
+function deleteUser(int $userId): bool {
+    $sql = "DELETE FROM User WHERE UserID = :id";
+    executeQuery($sql, [':id' => $userId]);
+    return true;
+}
+
+/**
+ * Retrieves all users
+ * @return array Array of user records
+ */
+function getAllUsers(): array {
+    $sql = "SELECT UserID, Username, Email, Role FROM User ORDER BY UserID DESC";
+    $stmt = executeQuery($sql);
+    return $stmt->fetchAll();
 }

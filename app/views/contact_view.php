@@ -34,7 +34,7 @@ if (isset($_SESSION["contact_status"])) {
     </div>
 
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" class="button">
 </form>
 
 <?php require APP_DIR . '/views/footer_view.php'; ?>

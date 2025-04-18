@@ -11,7 +11,15 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">Sign In</button>
+        <button type="submit" class="button">Sign In</button>
+
+        <?php
+            if (!empty($errors)) {
+                foreach ($errors as $error) {
+                    echo '<p class="error-p">' . $error . "</p>";
+                }
+            }
+        ?>
 
         <p>Don't have an account? <a href="?action=signup">Sign up</a></p>
     </form>

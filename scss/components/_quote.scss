@@ -1,0 +1,36 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.quote-container {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    width: 90%;
+    @include responsive-width;
+    background-color: white;
+    border-radius: 10px;
+
+    .quote-content {
+        padding: 1rem;
+        border-radius: 10px;
+        min-height: 100px;
+
+        blockquote {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            
+            #quote-footer {
+                margin-top: 0.5rem;
+                font-style: normal;
+                font-weight: bold;
+                color: $accent;
+            }
+        }
+
+        .loading {
+            color: $text-muted;
+            font-style: italic;
+        }
+    }
+}

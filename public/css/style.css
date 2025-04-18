@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* montserrat-regular - latin */
 @font-face {
   font-display: swap;
@@ -33,6 +34,148 @@ ul, ol {
 }
 ul li a, ol li a {
   text-decoration: none;
+}
+
+.main-title {
+  font-size: 24px;
+  margin: 30px 10px;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .main-title {
+    font-size: 40px;
+  }
+}
+
+.secondary-title {
+  font-size: 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .secondary-title {
+    font-size: 26px;
+  }
+}
+@media (min-width: 1024px) {
+  .secondary-title {
+    font-size: 32px;
+  }
+}
+
+.basic-text {
+  font-size: 16px;
+  margin: 20px 0;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  .basic-text {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1024px) {
+  .basic-text {
+    font-size: 20px;
+  }
+}
+
+.basic-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  max-width: 100%;
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  .basic-form {
+    max-width: 600px;
+    margin: 30px auto;
+  }
+}
+@media (min-width: 1024px) {
+  .basic-form {
+    max-width: 800px;
+  }
+}
+.basic-form label {
+  margin: 4px;
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  .basic-form label {
+    font-size: 18px;
+  }
+}
+.basic-form select {
+  height: 40px;
+  font-size: 16px;
+  margin: 4px;
+}
+.basic-form input, .basic-form textarea {
+  width: 100%;
+  height: auto;
+  padding: 8px;
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  .basic-form input, .basic-form textarea {
+    font-size: 18px;
+  }
+}
+.basic-form .checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.basic-form .checkbox-container input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+}
+.basic-form input[type=submit], .basic-form button {
+  height: 40px;
+  margin: 10px 0;
+}
+@media (min-width: 768px) {
+  .basic-form input[type=submit], .basic-form button {
+    font-size: 18px;
+    height: 45px;
+  }
+}
+
+.video-container {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.video-container video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+@media (min-width: 768px) {
+  .video-container {
+    max-width: 600px;
+  }
+}
+@media (min-width: 1024px) {
+  .video-container {
+    max-width: 800px;
+  }
+}
+
+.error-p {
+  color: #C8102E;
+  margin: 10px 0;
+  font-weight: bold;
 }
 
 #header-nav {
@@ -148,15 +291,15 @@ ul li a, ol li a {
   }
 }
 
-footer {
+#main-footer {
   box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-footer #footer-nav {
+#main-footer #footer-nav {
   color: #000;
   padding: 18px 0;
 }
-footer #footer-nav a {
+#main-footer #footer-nav a {
   color: #000;
   display: flex;
   justify-content: center;
@@ -165,162 +308,257 @@ footer #footer-nav a {
   font-size: 18px;
 }
 
-.call-to-action {
-  color: #FFF;
-  background-color: #007A33;
-  padding: 10px 20px;
+.button {
+  border-radius: 10px;
   text-decoration: none;
+  background-color: #007A33;
+  color: #FFF;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
-.call-to-action:hover {
-  background-color: #C8102E;
+.button:hover {
+  transform: scale(1.05);
 }
 
-.main-title {
-  font-size: 24px;
-  margin: 30px 10px;
+.quote-container {
   text-align: center;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
 }
 @media (min-width: 768px) {
-  .main-title {
-    font-size: 32px;
-  }
-}
-@media (min-width: 1024px) {
-  .main-title {
-    font-size: 40px;
-  }
-}
-
-.secondary-title {
-  font-size: 20px;
-  margin: 20px 0;
-  text-align: center;
-}
-@media (min-width: 768px) {
-  .secondary-title {
-    font-size: 26px;
-  }
-}
-@media (min-width: 1024px) {
-  .secondary-title {
-    font-size: 32px;
-  }
-}
-
-.basic-text {
-  font-size: 16px;
-  margin: 20px 0;
-  line-height: 1.5;
-}
-@media (min-width: 768px) {
-  .basic-text {
-    font-size: 18px;
-  }
-}
-@media (min-width: 1024px) {
-  .basic-text {
-    font-size: 20px;
-  }
-}
-
-.basic-form {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  max-width: 100%;
-  padding: 10px;
-}
-@media (min-width: 768px) {
-  .basic-form {
+  .quote-container {
     max-width: 600px;
     margin: 30px auto;
   }
 }
 @media (min-width: 1024px) {
-  .basic-form {
+  .quote-container {
     max-width: 800px;
   }
 }
-.basic-form label {
-  margin: 4px;
-  font-size: 16px;
+.quote-container .quote-content {
+  padding: 1rem;
+  border-radius: 10px;
+  min-height: 100px;
 }
-@media (min-width: 768px) {
-  .basic-form label {
-    font-size: 18px;
-  }
+.quote-container .quote-content blockquote {
+  font-style: italic;
+  font-size: 1.2rem;
+  margin: 1rem 0;
 }
-.basic-form input, .basic-form textarea {
-  width: 100%;
-  height: auto;
-  padding: 8px;
-  font-size: 16px;
+.quote-container .quote-content blockquote #quote-footer {
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-weight: bold;
+  color: #C8102E;
 }
-@media (min-width: 768px) {
-  .basic-form input, .basic-form textarea {
-    font-size: 18px;
-  }
-}
-.basic-form .checkbox-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.basic-form .checkbox-container input[type=checkbox] {
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-}
-.basic-form input[type=submit], .basic-form button {
-  height: 40px;
-  margin: 10px 0;
-  font-size: 16px;
-  cursor: pointer;
-  color: #FFF;
-  background-color: #007A33;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-.basic-form input[type=submit]:hover, .basic-form button:hover {
-  background-color: #C8102E;
-}
-@media (min-width: 768px) {
-  .basic-form input[type=submit], .basic-form button {
-    font-size: 18px;
-    height: 45px;
-  }
+.quote-container .quote-content .loading {
+  color: #666;
+  font-style: italic;
 }
 
-.video-container {
-  width: 90%;
-  max-width: 100%;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-.video-container video {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-@media (min-width: 768px) {
-  .video-container {
-    max-width: 700px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-}
-@media (min-width: 1024px) {
-  .video-container {
-    max-width: 900px;
-  }
-}
 #about-section {
   margin: 20px 10px 30px 10px;
 }
 #about-section .call-to-action {
   margin: 20px 0;
+}
+@media (min-width: 768px) {
+  #about-section {
+    max-width: 600px;
+    margin: 30px auto;
+  }
+}
+@media (min-width: 1024px) {
+  #about-section {
+    max-width: 800px;
+  }
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .recipes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .recipes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.recipe-card:hover {
+  transform: translateY(-2px);
+}
+
+.recipe-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.recipe-image.placeholder-image {
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.recipe-image.placeholder-image::after {
+  content: "🍳 No Image";
+  color: #666;
+  position: absolute;
+}
+
+.recipe-content {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.recipe-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #000;
+}
+
+.recipe-author {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.recipe-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.recipe-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.recipe-description {
+  color: #444;
+  line-height: 1.6;
+  overflow: hidden;
+  position: relative;
+  max-height: 4.8em;
+  margin-bottom: 1rem;
+}
+.recipe-description:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 1.6em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%);
+}
+
+.no-recipes {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.admin-dashboard {
+  max-width: 90%;
+  margin: auto;
+  padding: 20px 0;
+}
+@media (min-width: 768px) {
+  .admin-dashboard {
+    max-width: 600px;
+    margin: 30px auto;
+  }
+}
+@media (min-width: 1024px) {
+  .admin-dashboard {
+    max-width: 800px;
+  }
+}
+.admin-dashboard .admin-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 2rem 0;
+}
+.admin-dashboard .admin-section a {
+  margin: 10px;
+}
+.admin-dashboard .admin-section .user-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  margin: 10px 0;
+  border-bottom: 1px solid #EDEDED;
+}
+.admin-dashboard .admin-section .user-item:last-child {
+  border-bottom: none;
+}
+.admin-dashboard .admin-section img {
+  height: auto;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+.admin-dashboard .admin-section .recipe-item {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  background: rgb(249.75, 249.75, 249.75);
+  border-radius: 8px;
+}
+.admin-dashboard .admin-section .recipe-item h3 {
+  color: #007A33;
+  margin-bottom: 0.5rem;
+}
+.admin-dashboard .alert {
+  color: #C8102E;
+  margin: 10px 0;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.admin-dashboard .alert.success {
+  background: rgb(71, 255, 147.9180327869);
+  color: rgb(0, 20, 8.3606557377);
 }
 
 /*# sourceMappingURL=style.css.map */

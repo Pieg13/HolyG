@@ -4,7 +4,7 @@ if (isset($_GET["action"]) && $_GET["action"] == "about") {
 
 <h1 class="main-title">About Us</h1>
     <div class="video-container">
-        <video autoplay muted loop>
+        <video controls muted loop>
             <source src="public/video/mex-food.mp4">
         </video>
     </div>
@@ -22,5 +22,5 @@ if (isset($_GET["action"]) && $_GET["action"] == "about") {
     <p class="basic-text">
         So grab your fresh ingredients, fire up the comal, and let’s make something truly delicioso.
     </p>
-    <a class="call-to-action" href="?action=recipes">Let's go!</a>
+    <a class="button" href="?action=recipes">Let's go!</a>
 </div>

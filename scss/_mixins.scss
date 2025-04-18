@@ -1,6 +1,19 @@
+@use 'variables' as *;
+
 @mixin flexmid($direction: row, $justify: flex-start) {
     display: flex;
     justify-content: $justify;
     flex-direction: $direction;
     align-items: center;
+}
+
+@mixin responsive-width {
+    @media (min-width: 768px) {
+        max-width: 600px;
+        margin: 30px auto;
+    }
+
+    @media (min-width: 1024px) {
+        max-width: 800px;
+    }
 }

@@ -1,8 +1,11 @@
 @use 'variables';
 @use 'mixins';
 @use 'global_style';
+@use 'components/utilities';
 @use 'components/header';
 @use 'components/footer';
 @use 'components/buttons';
-@use 'components/utilities';
+@use 'components/quote';
 @use 'pages/about';
+@use 'pages/recipes';
+@use 'pages/admin';

@@ -1,3 +1,17 @@
+<?php
+ob_start('minify_output');
+
+function minify_output($buffer) {
+    $search = [
+        '/\>[^\S]+/s',
+        '/[^\S ]+\</s',
+        '/(\S)+/s'
+    ];
+    $replace = ['>', '<', '\\1'];
+    return preg_replace($search, $replace, $buffer);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

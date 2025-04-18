@@ -1,6 +1,11 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
 #about-section {
     margin: 20px 10px 30px 10px;
     .call-to-action {
         margin: 20px 0;
     }
+
+    @include responsive-width;
 }

@@ -23,4 +23,4 @@
         </ul>
     </nav>
 </header>
-<script src="public/js/burger_menu.js"></script>
+<script type="module" src="public/js/burger_menu.js"></script>

@@ -1,13 +1,17 @@
 @use '../mixins' as *;
 @use '../variables' as *;
 
-.call-to-action {
-    color: $text-light;
+.button {
+    border-radius: 10px;
+    text-decoration: none;
     background-color: $main;
-    padding: 10px 20px;
+    color: $text-light;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
     
     &:hover {
-        background-color: $accent;
+        transform: scale(1.05);
     }
-    text-decoration: none;
 }

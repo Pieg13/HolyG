@@ -1,4 +1,4 @@
-<footer>
+<footer id="main-footer">
     <ul id="footer-nav">
         <li><a href="?action=home">HOME</a></li>
         <li><a href="?action=recipes">RECIPES</a></li>
@@ -9,3 +9,7 @@
 </footer>
 </body>
 </html>
+
+<?php
+ob_end_flush();
+?>

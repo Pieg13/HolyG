@@ -22,7 +22,7 @@
             </div>
         <?php endif; ?>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" class="button">Sign Up</button>
     </form>
 
 <?php require APP_DIR . '/views/footer_view.php'; ?>

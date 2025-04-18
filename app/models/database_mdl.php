@@ -20,7 +20,9 @@ function connect(): PDO {
             $pdo = new PDO($dsn, DB_USERNAME, DB_PASSWORD, $options);
             return $pdo;
         } catch (PDOException $e) {
-            die('Database connection failed: ' . $e->getMessage());
+            $error='Database connection failed: ' . $e->getMessage();
+            require VIEW_DIR . '/error_view.php';
+            exit();
         }
     }
     return $pdo;
