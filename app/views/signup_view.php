@@ -3,7 +3,7 @@
 
     <h1 class="main-title">Register</h1>
 
-    <form action="index.php?action=signup" method="POST" class="basic-form">
+    <form action="signup" method="POST" class="basic-form">
         
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" placeholder="email@company.com" required>

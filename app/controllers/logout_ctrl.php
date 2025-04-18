@@ -7,6 +7,6 @@ $_SESSION = [];
 session_destroy();
 
 // Redirect to home page
-header("Location: index.php?action=home");
+header("Location: home");
 exit();
 ?>

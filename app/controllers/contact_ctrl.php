@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["contact_status"] = "error";
     }
 
-    header("Location: index.php?action=contact");
+    header("Location: contact");
     exit;
 }
 

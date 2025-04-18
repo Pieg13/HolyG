@@ -2,7 +2,7 @@
 
 // Redirect if not logged in
 if (!isset($_SESSION['user'])) {
-    header('Location: index.php?action=signin');
+    header('Location: signin');
     exit();
 }
 

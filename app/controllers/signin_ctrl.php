@@ -20,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Redirect based on role
         if (is_admin()) {
-            header('Location: index.php?action=admin');
+            header('Location: admin');
         } else {
-            header('Location: index.php?action=user');
+            header('Location: user');
         }
         exit();
     } else {

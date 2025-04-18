@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($valid) {
         try {
             createUser($email, $username, $password);
-            header('Location: index.php?action=signin');
+            header('Location: signin');
             exit();
         } catch (InvalidArgumentException $e) {
             $errors[] = htmlspecialchars($e->getMessage());

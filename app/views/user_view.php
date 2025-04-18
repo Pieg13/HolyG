@@ -4,7 +4,7 @@
 <div>
     <h1 class="main-title">My Account</h1>
     <p>Welcome, <?= htmlspecialchars($_SESSION['user']['username']) ?>!</p>
-    <a href="index.php?action=logout" class="button">Log Out</a>
+    <a href="logout" class="button">Log Out</a>
 </div>
 
 <?php require APP_DIR . '/views/footer_view.php'; ?>

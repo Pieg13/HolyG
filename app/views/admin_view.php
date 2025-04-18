@@ -7,12 +7,12 @@
     <section class="admin-section">
     <h2 class="secondary-title">My Account</h2>
         <p>Welcome, <?= htmlspecialchars($_SESSION['user']['username']) ?>!</p>
-        <a href="index.php?action=logout" class="button">Log Out</a>
+        <a href="logout" class="button">Log Out</a>
     </section>
 
     <section class="admin-section">
         <h2 class="secondary-title">Create New Recipe</h2>
-        <form method="POST" action="index.php?action=admin" enctype="multipart/form-data" class="basic-form">
+        <form method="POST" action="admin" enctype="multipart/form-data" class="basic-form">
             <input type="hidden" name="action" value="create_recipe">
             
                 <label>Recipe Image:</label>
@@ -59,7 +59,7 @@
             <?php foreach ($users as $user): ?>
                 <div class="user-item">
                     <span><?= htmlspecialchars($user['Username']) ?> (<?= htmlspecialchars($user['Email']) ?>)</span>
-                    <a href="index.php?action=admin&delete=user&id=<?= $user['UserID'] ?>" 
+                    <a href="admin&delete=user&id=<?= $user['UserID'] ?>" 
                        class="button danger"
                        onclick="return confirm('Are you sure you want to delete this user?')">
                         Delete
@@ -81,7 +81,7 @@
                     <?php endif; ?>
                     <h3><?= htmlspecialchars($recipe['Title']) ?></h3>
                     <p>By <?= htmlspecialchars($recipe['Author']) ?></p>
-                    <a href="index.php?action=admin&delete=recipe&id=<?= $recipe['RecipeID'] ?>" 
+                    <a href="admin&delete=recipe&id=<?= $recipe['RecipeID'] ?>" 
                        class="button danger"
                        onclick="return confirm('Are you sure you want to delete this recipe?')">
                         Delete
