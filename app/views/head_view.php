@@ -3,11 +3,11 @@ ob_start('minify_output');
 
 function minify_output($buffer) {
     $search = [
-        '/\>[^\S]+/s',
-        '/[^\S ]+\</s',
-        '/(\S)+/s'
+        '/>[^\S ]+/s',
+        '/[^\S ]+</s',
+        '/(\s)+/s'
     ];
-    $replace = ['>', '<', '\\1'];
+    $replace = ['>', '<', '\1'];
     return preg_replace($search, $replace, $buffer);
 }
 ?>
