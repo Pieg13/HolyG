@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const burgerIcon = document.getElementById('burger-icon');
     const navLinks = document.getElementById('nav-links');
-    const headerNav = document.getElementById('header-nav'); // Define headerNav here
+    const headerNav = document.getElementById('header-nav');
 
     // Toggle menu when burger icon is clicked
     burgerIcon.addEventListener('click', function() {

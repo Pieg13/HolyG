@@ -1,13 +1,17 @@
-<main>
-    <h1>Privacy policy</h1>
+<main aria-label="Privacy Policy Section">
+    <h1 aria-label="Page Title">Privacy Policy</h1>
     <section id="privacy-section">
-        <p>At <strong>HolyG</strong>, we are committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you visit our website or interact with our services.</p>
+        <p aria-label="Privacy Statement">
+            At <strong>HolyG</strong>, we are committed to protecting and respecting your privacy. 
+            This Privacy Policy explains how we collect, use, disclose, and safeguard your personal 
+            information when you visit our website or interact with our services.
+        </p>
 
         <h2>1. Information We Collect</h2>
         <p>We collect and process the following types of information when you interact with our website:</p>
-        <ul>
-            <li><strong>Personal Information:</strong> When you sign up, log in, or interact with our platform, we may collect personal details such as your name, email address, and password.</li>
-            <li><strong>Usage Data:</strong> We collect information on how you interact with our website, such as IP address, browser type, and pages visited. This helps us improve the user experience and website functionality.</li>
+        <ul aria-label="Collected Information List">
+            <li><strong>Personal Information:</strong> We may collect details such as your name, email address, and password.</li>
+            <li><strong>Usage Data:</strong> Information such as IP address, browser type, and pages visited help improve user experience.</li>
         </ul>
 
         <h2>2. How We Use Your Information</h2>
@@ -20,7 +24,10 @@
         </ul>
 
         <h2>3. Cookies and Tracking Technologies</h2>
-        <p>We use cookies and other tracking technologies to enhance your experience on our website. Cookies are small files stored on your device to improve performance, personalize content, and analyze traffic.</p>
+        <p aria-label="Cookie Policy">
+            We use cookies and other tracking technologies to enhance your experience on our website. 
+            Cookies are small files stored on your device to improve performance, personalize content, and analyze traffic.
+        </p>
         <p>You can manage your cookie preferences through your browser settings, but disabling cookies may affect the functionality of the website.</p>
 
         <h2>4. Third-Party Services</h2>
@@ -35,7 +42,10 @@
         <p>We store your personal data securely using encryption and other security measures. Your data will only be retained as long as necessary for the purposes outlined in this policy or as required by law.</p>
 
         <h2>6. GDPR Compliance</h2>
-        <p>As a user located in the European Union, you have the following rights under the General Data Protection Regulation (GDPR):</p>
+        <p aria-label="GDPR Rights">
+            If you are in the European Union, you have rights under GDPR, including access, rectification, erasure, 
+            and data portability. Contact us if you wish to exercise these rights.
+        </p>
         <ul>
             <li><strong>Right to Access:</strong> You can request access to the personal data we hold about you.</li>
             <li><strong>Right to Rectification:</strong> You can request correction of any inaccurate or incomplete data.</li>
@@ -56,8 +66,10 @@
         <p>We may update this Privacy Policy from time to time. When we do, we will post the revised policy on this page with an updated revision date. We encourage you to review this policy periodically for any changes.</p>
 
         <h2>10. Contact Us</h2>
-        <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:</p>
-        <ul>
+        <p aria-label="Contact Information">
+            If you have questions or concerns about this Privacy Policy, you can reach us at:
+        </p>
+        <ul aria-label="Contact Details">
             <li><strong>Email:</strong> <a href="mailto:admin@example.com">admin@example.com</a></li>
             <li><strong>Postal Address:</strong> 1 Rue Albert</li>
         </ul>

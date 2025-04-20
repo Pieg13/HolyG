@@ -20,15 +20,20 @@ if (isset($_GET['edit']) && $_GET['edit'] === 'recipe' && isset($_GET['id'])) {
         exit;
     }
 
+    if ($recipe['CreatedBy'] !== current_user_id() && !is_admin()) {
+        header("Location: admin");
+        exit;
+    }
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Get form data
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $ingredients = $_POST['ingredients'];
-        $instructions = $_POST['instructions'];
-        $cookingTime = $_POST['cooking_time'];
-        $difficulty = $_POST['difficulty'];
-        $createdBy = current_user_id();  // Assuming the logged-in user is the one updating the recipe
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+        $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+        $ingredients = filter_input(INPUT_POST, 'ingredients', FILTER_SANITIZE_STRING);
+        $instructions = filter_input(INPUT_POST, 'instructions', FILTER_SANITIZE_STRING);
+        $cookingTime = filter_input(INPUT_POST, 'cooking_time', FILTER_VALIDATE_INT);
+        $difficulty = filter_input(INPUT_POST, 'difficulty', FILTER_SANITIZE_STRING);
+        $createdBy = current_user_id();
         $image = $_FILES['image'] ?? null;
     
         // Handle file upload (for image change)

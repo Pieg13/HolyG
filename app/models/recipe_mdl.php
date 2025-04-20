@@ -111,28 +111,33 @@ function getRecipeByID(int $recipeId): ?array {
 }
 
 function updateRecipe($id, $title, $description, $ingredients, $instructions, $cookingTime, $difficulty, $createdBy, $imageURL) {
-    // Get the database connection using the connect function
-    $pdo = connect();  // This function will establish and return the PDO connection
+    $pdo = connect();
     
-    // SQL query to update the recipe (corrected column names)
-    $query = "UPDATE recipe SET Title = :title, Description = :description, Ingredients = :ingredients, 
-              Instructions = :instructions, CookingTime = :cookingTime, Difficulty = :difficulty, 
-              CreatedBy = :createdBy, ImageURL = :imageURL WHERE RecipeID = :id";
+    $query = "UPDATE Recipe SET 
+        Title = :title, 
+        Description = :description, 
+        Ingredients = :ingredients, 
+        Instructions = :instructions, 
+        CookingTime = :cookingTime, 
+        Difficulty = :difficulty, 
+        CreatedBy = :createdBy, 
+        ImageURL = :imageURL 
+        WHERE RecipeID = :id";
     
-    // Prepare and execute the query
     $stmt = $pdo->prepare($query);
-
-    // Bind the parameters
-    $stmt->bindParam(':id', $id);
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':ingredients', $ingredients);
-    $stmt->bindParam(':instructions', $instructions);
-    $stmt->bindParam(':cookingTime', $cookingTime);
-    $stmt->bindParam(':difficulty', $difficulty);
-    $stmt->bindParam(':createdBy', $createdBy);
-    $stmt->bindParam(':imageURL', $imageURL);
     
-    // Execute the statement and return the result
-    $stmt->execute();
+    // Explicitly cast integer values
+    $params = [
+        ':id' => (int)$id,
+        ':title' => $title,
+        ':description' => $description,
+        ':ingredients' => $ingredients,
+        ':instructions' => $instructions,
+        ':cookingTime' => (int)$cookingTime,
+        ':difficulty' => $difficulty,
+        ':createdBy' => (int)$createdBy,
+        ':imageURL' => $imageURL
+    ];
+    
+    $stmt->execute($params); // Bind all parameters at once
 }
