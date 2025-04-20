@@ -1,0 +1,9 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+#privacy-section {
+    ul {
+        list-style:circle;
+        margin-bottom: 1.5rem;
+    }
+}

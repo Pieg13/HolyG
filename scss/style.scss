@@ -4,8 +4,7 @@
 @use 'components/utilities';
 @use 'components/header';
 @use 'components/footer';
-@use 'components/buttons';
+@use 'components/recipes_grid';
 @use 'components/quote';
-@use 'pages/about';
-@use 'pages/recipes';
-@use 'pages/admin';
+@use 'pages/recipes_details';
+@use 'pages/privacy';

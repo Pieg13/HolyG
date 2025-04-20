@@ -1,11 +1,12 @@
+</main>
 <footer id="main-footer">
     <ul id="footer-nav">
-        <li><a href="?action=home">HOME</a></li>
-        <li><a href="?action=recipes">RECIPES</a></li>
-        <li><a href="?action=about">ABOUT</a></li>
-        <li><a href="?action=contact">CONTACT</a></li>
+        <li><a href="home">HOME</a></li>
+        <li><a href="recipes">RECIPES</a></li>
+        <li><a href="about">ABOUT</a></li>
+        <li><a href="contact">CONTACT</a></li>
     </ul>
-    <p></p>
+    <p>&copy; webpro | Read our <a href="privacy" target="blank">privacy policy</a></p>
 </footer>
 </body>
 </html>

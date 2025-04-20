@@ -1,7 +1,8 @@
 <?php require APP_DIR . '/views/head_view.php'; ?>
 <?php require APP_DIR . '/views/header_view.php'; ?>
 
-<h1 class="main-title">Contact us</h1>
+<main>
+<h1>Contact us</h1>
 
 <?php
 
@@ -15,8 +16,8 @@ if (isset($_SESSION["contact_status"])) {
     unset($_SESSION["contact_status"]);
 }
 ?>
-
-<form action="?action=contact" method="post" class="basic-form">
+<div class="container">
+<form action="contact" method="post" class="basic-form">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
 
@@ -29,12 +30,12 @@ if (isset($_SESSION["contact_status"])) {
     <div class="checkbox-container">
         <input type="checkbox" id="privacy" name="privacy" required>
         <label for="privacy">
-            I have read and agree to the <a href="?action=privacy" target="_blank">Privacy Policy</a>
+            I have read and agree to the <a href="privacy" target="_blank">Privacy Policy</a>
         </label>
     </div>
 
 
     <input type="submit" value="Submit" class="button">
 </form>
-
+</div>
 <?php require APP_DIR . '/views/footer_view.php'; ?>

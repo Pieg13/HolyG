@@ -2,20 +2,19 @@
 @use '../variables' as *;
 
 .quote-container {
-    text-align: center;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    width: 90%;
-    @include responsive-width;
-    background-color: white;
-    border-radius: 10px;
+    h2 {
+        margin-bottom: 0;
+    }
+
+    button {
+        margin-top: 1rem;
+    }
 
     .quote-content {
-        padding: 1rem;
-        border-radius: 10px;
-        min-height: 100px;
+        @include flexmid(column, center);
 
         blockquote {
+            @include flexmid(column, center);
             font-style: italic;
             font-size: 1.2rem;
             margin: 1rem 0;

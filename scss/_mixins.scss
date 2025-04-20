@@ -7,13 +7,29 @@
     align-items: center;
 }
 
-@mixin responsive-width {
-    @media (min-width: 768px) {
-        max-width: 600px;
-        margin: 30px auto;
+@mixin padding-radius($apply-padding: true, $apply-radius: true) {
+    @if $apply-radius {
+        border-radius: $radius;
+    }
+    @if $apply-padding {
+        padding: $padding;
     }
 
-    @media (min-width: 1024px) {
-        max-width: 800px;
+    @media (min-width: $tablet) {
+        @if $apply-radius {
+            border-radius: $radius * 1.5;
+        }
+        @if $apply-padding {
+            padding: $padding * 1.5;
+        }
+    }
+
+    @media (min-width: $desktop) {
+        @if $apply-radius {
+            border-radius: $radius * 2;
+        }
+        @if $apply-padding {
+            padding: $padding * 2;
+        }
     }
 }
