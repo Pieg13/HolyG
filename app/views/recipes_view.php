@@ -1,6 +1,6 @@
 <main aria-label="Recipes Section">
-    
-    <h1 aria-label="Page Title">Recipes</h1>
+
+    <h1 aria-label="Page Title"><?= $intro ?></h1>
     
     <div class="recipes-grid" aria-label="Recipe List">
         <?php foreach ($recipes as $recipe): ?>

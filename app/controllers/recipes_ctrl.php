@@ -2,7 +2,8 @@
 require_once APP_DIR . '/models/recipe_mdl.php';
 
 $title = "Recipes | HolyG";
-$recipes = getAllRecipes();
+$intro = "Our Recipes";
+$recipes = getAllRecipes("all");
 
 require APP_DIR . '/views/head_view.php';
 require APP_DIR . '/views/header_view.php';

@@ -44,14 +44,27 @@ function createRecipe(array $recipeData): int {
 }
 
 /**
- * Retrieves all recipes with author information
+ * Retrieves all recipes or 2 recipes if featured is true
  * @return array Array of recipe records
  */
-function getAllRecipes(): array {
+function getAllRecipes(string $type = 'all'): array {
+    // Validate the type parameter
+    if (!in_array($type, ['all', 'featured'])) {
+        $type = 'all'; // Default to 'all' if invalid
+    }
+
+    // Base SQL query
     $sql = "SELECT r.*, u.Username AS Author 
             FROM Recipe r
             JOIN User u ON r.CreatedBy = u.UserID
             ORDER BY r.RecipeID DESC";
+
+    // Add LIMIT 2 for 'featured'
+    if ($type === 'featured') {
+        $sql .= " LIMIT 2";
+    }
+
+    // Execute the query
     $stmt = executeQuery($sql);
     return $stmt->fetchAll();
 }
@@ -140,4 +153,10 @@ function updateRecipe($id, $title, $description, $ingredients, $instructions, $c
     ];
     
     $stmt->execute($params); // Bind all parameters at once
+}
+
+function getFeaturedRecipes() {
+    $query = "SELECT * FROM Recipe ORDER BY RecipeID DESC LIMIT 2";
+    $result = $db->query($query);
+    return $result->fetch_all(MYSQLI_ASSOC); // Return recipes as an associative array
 }
