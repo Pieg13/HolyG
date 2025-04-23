@@ -1,3 +1,7 @@
+<Files ".*">
+    deny from all
+</Files>
+
 Options -Indexes
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
