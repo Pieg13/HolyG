@@ -363,6 +363,12 @@ p, a, label {
   font-weight: bold;
 }
 
+.success {
+  color: #007A33;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
 #header-nav {
   padding: 15px;
   background-color: #fff;

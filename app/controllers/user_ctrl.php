@@ -1,5 +1,9 @@
 <?php
 
+/* -------------------------------------------------------------------------- */
+/*                        USER PROFILE PAGE CONTROLLER                        */
+/* -------------------------------------------------------------------------- */
+
 // Redirect if not logged in
 if (!isset($_SESSION['user'])) {
     header('Location: signin');

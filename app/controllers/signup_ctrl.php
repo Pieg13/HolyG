@@ -3,9 +3,10 @@ $title = 'Sign Up | HolyG';
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Include the model for interacting with user data
     require APP_DIR . '/models/user_mdl.php';
     
-    // Sanitize inputs
+    // Sanitize user inputs to prevent XSS and invalid data
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $valid = false;
     }
 
-    // Check existing credentials
+    // Check if email or username already exist in the database
     if ($valid) {
         $exists = checkExistingCredentials($email, $username);
         
@@ -40,11 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         if (!empty($errors)) {
-            $valid = false;
+            $valid = false; // If there are any errors, set the valid flag to false
         }
     }
 
-    // Create user if valid
+    // If all inputs are valid, create the user account
     if ($valid) {
         try {
             createUser($email, $username, $password);

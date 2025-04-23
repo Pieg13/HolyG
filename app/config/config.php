@@ -1,24 +1,24 @@
 <?php
 
 /* -------------------------------------------------------------------------- */
-/*                                Global config                               */
+/*                               GENERAL CONFIG                               */
 /* -------------------------------------------------------------------------- */
 
-/* --------------------------- define directories --------------------------- */
+/* --------------------------- Define directories --------------------------- */
 define("ROOT", dirname(dirname(__DIR__)));
-define("APP_DIR", ROOT . "/app"); // Define app directory
-define("CTRL_DIR", APP_DIR . "/controllers"); // Define controllers directory
-define("VIEW_DIR", APP_DIR . "/views"); // Define views directory
-define("DB_DIR", APP_DIR . "/models"); // Define models directory
-define("PUBLIC_DIR", ROOT . "/public"); // Define public directory
+define("APP_DIR", ROOT . "/app");
+define("CTRL_DIR", APP_DIR . "/controllers");
+define("VIEW_DIR", APP_DIR . "/views");
+define("DB_DIR", APP_DIR . "/models");
+define("PUBLIC_DIR", ROOT . "/public");
 
-/* ----------------------- database connection related ---------------------- */
+/* ----------------- Define database connection credentials ----------------- */
 const DB_USERNAME = 'root'; // username
 const DB_PASSWORD = ''; // user password
 const DB_DATABASE = 'holyg'; // database name
 const DB_HOST = 'localhost'; // database host
 
-/* ------------------------- authentication helpers ------------------------- */
+/* ------------------------- Authentication helpers ------------------------- */
 function is_logged_in(): bool {
     return isset($_SESSION['user']);
 }

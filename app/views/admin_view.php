@@ -10,6 +10,15 @@
         <a href="logout" class="button" aria-label="Logout Button">Log Out</a>
     </section>
 
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="alert success" aria-label="Success Message"><?= htmlspecialchars($_SESSION['success']) ?></div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert error-p" aria-label="Error Message"><?= htmlspecialchars($_SESSION['error']) ?></div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
     <section class="container" aria-label="Recipe Creation Section">
         <h2 aria-label="Create Recipe Section Title">Create New Recipe</h2>
         <form method="POST" action="admin" enctype="multipart/form-data" class="basic-form" aria-label="Recipe Form">
@@ -43,15 +52,6 @@
             <button type="submit" class="button" aria-label="Publish Recipe Button">Publish Recipe</button>
         </form>
     </section>
-
-    <?php if (isset($_SESSION['success'])): ?>
-        <div class="alert success" aria-label="Success Message"><?= htmlspecialchars($_SESSION['success']) ?></div>
-        <?php unset($_SESSION['success']); ?>
-    <?php endif; ?>
-    <?php if (isset($_SESSION['error'])): ?>
-        <div class="alert error" aria-label="Error Message"><?= htmlspecialchars($_SESSION['error']) ?></div>
-        <?php unset($_SESSION['error']); ?>
-    <?php endif; ?>
 
     <section class="container" aria-label="User Management Section">
         <h2 aria-label="Manage Users Section Title">Manage Users</h2>

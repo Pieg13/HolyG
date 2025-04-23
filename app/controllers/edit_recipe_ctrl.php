@@ -1,6 +1,10 @@
 <?php
 require_once APP_DIR . '/models/recipe_mdl.php';
 
+/* -------------------------------------------------------------------------- */
+/*                         RECIPE EDIT PAGE CONTROLLER                        */
+/* -------------------------------------------------------------------------- */
+
 // Check if the user is an admin or the recipe owner
 if (!is_admin() && !is_recipe_owner($_GET['id'])) { // Implement is_recipe_owner() logic
     header("Location: index.php");
@@ -8,10 +12,10 @@ if (!is_admin() && !is_recipe_owner($_GET['id'])) { // Implement is_recipe_owner
 }
 
 if (isset($_GET['id'])) {
-    // Validate recipe ID
+    // Validate the recipe ID to prevent invalid or malicious input
     $recipeId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     if (!$recipeId) {
-        header("Location: admin");
+        header("Location: admin"); // Redirect to admin if the ID is invalid
         exit;
     }
 
@@ -23,7 +27,7 @@ if (isset($_GET['id'])) {
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Sanitize all inputs
+        // Sanitize all inputs to prevent XSS attacks and ensure safe data storage
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
         $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
         $ingredients = filter_input(INPUT_POST, 'ingredients', FILTER_SANITIZE_STRING);
@@ -32,17 +36,18 @@ if (isset($_GET['id'])) {
         $difficulty = filter_input(INPUT_POST, 'difficulty', FILTER_SANITIZE_STRING);
         $image = $_FILES['image'] ?? null;
 
-        // Validate required fields
+        // Validate required fields and handle errors securely
         $errors = [];
         if (empty($title)) $errors[] = "Title is required";
         if (empty($ingredients)) $errors[] = "Ingredients are required";
         if (empty($instructions)) $errors[] = "Instructions are required";
         if (!$cookingTime || $cookingTime < 1) $errors[] = "Invalid cooking time";
         
+        // Check if difficulty is valid
         $allowedDifficulties = ['Easy', 'Medium', 'Hard'];
-        if (!in_array($difficulty, $allowedDifficulties)) $errors[] = "Invalid difficulty";
+        if (!in_array($difficulty, $allowedDifficulties)) $errors[] = "Invalid difficulty"; 
 
-        // Handle file upload securely
+        // Handle file upload securely with size and MIME type validation
         $imagePath = $recipe['ImageURL'];
         if ($image && $image['error'] === UPLOAD_ERR_OK) {
             $uploadDir = PUBLIC_DIR . '/images/recipes/';
@@ -61,17 +66,17 @@ if (isset($_GET['id'])) {
             }
 
             if (empty($errors)) {
-                // Generate safe filename
+                // Generate a unique filename to avoid overwriting existing files
                 $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
                 $filename = uniqid('recipe_', true) . '.' . $extension;
                 $targetPath = $uploadDir . basename($filename);
 
                 if (move_uploaded_file($image['tmp_name'], $targetPath)) {
                     $imagePath = 'images/recipes/' . $filename;
-                    // Delete old image if it exists
+                    // Delete the old image if it exists
                     if ($recipe['ImageURL']) {
                         $oldImage = PUBLIC_DIR . '/' . $recipe['ImageURL'];
-                        if (file_exists($oldImage)) unlink($oldImage);
+                        if (file_exists($oldImage)) unlink($oldImage); 
                     }
                 } else {
                     $errors[] = "Failed to upload image";
@@ -79,6 +84,7 @@ if (isset($_GET['id'])) {
             }
         }
 
+        // If no errors, update the recipe in the database
         if (empty($errors)) {
             try {
                 updateRecipe(

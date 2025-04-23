@@ -1,6 +1,10 @@
 <?php
 
-// Define routes as an associative array
+/* -------------------------------------------------------------------------- */
+/*                               HANDLE ROUTING                               */
+/* -------------------------------------------------------------------------- */
+
+/* ------------------ Define routes as an associative array ----------------- */
 $routes = [
     'home'              => CTRL_DIR . '/home_ctrl.php',
     'signin'            => CTRL_DIR . '/signin_ctrl.php',
@@ -16,22 +20,19 @@ $routes = [
     'user'              => CTRL_DIR . '/user_ctrl.php',
 ];
 
-// Set default page
+/* ---------------------------- Set $currentPage ---------------------------- */
 $currentPage = 'home';
 
-// Check if action parameter exists
+// If action exists and is defined in routes, set current page 
 if (isset($_GET["action"])) {
-    // Make sure the action exists in our routes
     if (array_key_exists($_GET["action"], $routes)) {
         $currentPage = $_GET["action"];
     } else {
-        // Invalid route - set to 404
-        $currentPage = '404';
+        $currentPage = '404'; // If not in route, set to 404
     }
 }
 
-// Make $currentPage available to all views
-// Route handling using associative array
+/* ----------------------------- Handles routing ---------------------------- */
 if ($currentPage === '404') {
     require CTRL_DIR . '/404_ctrl.php';
 } else {

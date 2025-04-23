@@ -1,8 +1,13 @@
 <?php
 
+/* -------------------------------------------------------------------------- */
+/*                           CONTACT PAGE CONTROLLER                          */
+/* -------------------------------------------------------------------------- */
+
 $title = "Contact | HolyG";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and validate the form inputs to prevent XSS and injection attacks
     $name = trim($_POST["name"]);
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $message = trim($_POST["message"]);
@@ -19,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["contact_status"] = "error";
     }
 
+    // Redirect to the same page after processing to prevent form resubmission on refresh
     header("Location: contact");
     exit;
 }
